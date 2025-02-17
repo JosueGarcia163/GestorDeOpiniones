@@ -74,7 +74,7 @@ export const getUsers = async (req, res) => {
 export const updatePassword = async (req, res) => {
     try {
         const { uid } = req.params
-        const { newPassword } = req.body
+        const { beforePassword, newPassword } = req.body
 
         const user = await User.findById(uid)
 
@@ -82,6 +82,15 @@ export const updatePassword = async (req, res) => {
             return res.status(404).json({
                 success: false,
                 message: "Usuario no encontrado"
+            });
+        }
+
+        //Verificar la password anterior colocada en el body, con la password de la db.
+        const VerifybeforePassword = await verify(user.password, beforePassword);
+        if(!VerifybeforePassword){
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña actual es incorrecta"
             });
         }
 
