@@ -11,12 +11,7 @@ const categorySchema = Schema({
         type: String,
         maxLength: [200, "Description cannot exceed 200 characters"],
     },
-
-    createdBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-    },
+    
     status: {
         type: Boolean,
         default: true

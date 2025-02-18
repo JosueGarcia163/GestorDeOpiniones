@@ -14,23 +14,10 @@ export const createCategories = async (req, res) => {
         const data = req.body;
         const user = req.usuario
         console.log(user._id)
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                message: 'Propietario no encontrado'
-            });
-        }
 
         const categories = new Categories({
-            ...data,
-            createdBy: user._id,
+            ...data
         });
-
-
-        //Validacion por si no encontramos el usuario.
-        if (!user) {
-            return res.status(404).json({ message: 'Usuario no encontrado' });
-        }
 
         // validacion para confirmar que el rol del usuario para crear cursos sea unicamente el admin.
         if (user.role !== 'ADMIN_ROLE') {
@@ -50,7 +37,7 @@ export const createCategories = async (req, res) => {
 
 export const getCategories = async (req, res) => {
     try {
-        const categories = await Categories.find().populate("createdBy", "name surname")
+        const categories = await Categories.find()
 
         return res.status(200).json({
             success: true,
@@ -75,18 +62,9 @@ export const updateCategory = async (req, res) => {
         if(!category){
             return res.status(404).json({
                 success: false,
-                msg: "Cita no encontrada",
+                msg: "Categoria no encontrada",
               });
         }
-
-      //Validamos que el usuario exista en la base de datos.
-      const user =  await User.findById(data.createdBy);
-      if (!user) {
-        return res.status(404).json({
-          success: false,
-          msg: "Usuario no encontrado",
-        });
-      }
   
       const updatedCategory = await Categories.findByIdAndUpdate(id, data, { new: true });
   
@@ -151,7 +129,7 @@ export const updateCategory = async (req, res) => {
     }
   }
 
-/*Funcion para crear usuario por default*/ 
+/*Funcion para crear categoria por default*/ 
 export const createDefaultCategory = async () => {
     try {
         /*Agregamos la constante de name por default antes 
@@ -169,19 +147,10 @@ export const createDefaultCategory = async () => {
             return;
         }
 
-        const defaultUser = await User.findOne({username: "admin"})
-        if(!defaultUser){
-            return res.status(404).json({
-                success: false,
-                message:"El usuario default no fue encontrado."
-              });
-        }
-
         /*Definimos los valores por default del usuario.*/ 
         const defaultCategory = new Categories({
             name: "CATEGORY_DEFAULT",
             description: "Esta es una categoria predeterminada.",
-            createdBy: defaultUser._id,
             status: true
         });
         
