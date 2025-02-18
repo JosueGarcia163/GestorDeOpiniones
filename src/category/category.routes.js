@@ -1,5 +1,5 @@
 import { Router } from "express"
-import {getCategories, createCategories } from "./category.controller.js"
+import {getCategories, createCategories, deleteCategory, updateCategory } from "./category.controller.js"
 import { createValidator, getCategoriesValidator, deleteCategoriesValidator, updateCategoriesValidator } from "../middlewares/category-validators.js"
 
 const router = Router()
@@ -48,6 +48,41 @@ router.post("/createCategories", createValidator, createCategories)
 
 
 router.get("/", getCategoriesValidator, getCategories)
+
+
+/**
+ * @swagger
+ * /categories/update:
+ *   put:
+ *     summary: Actualiza una categoría existente
+ *     tags: [Categories]
+ *     responses:
+ *       200:
+ *         description: Categoría actualizada con éxito
+ *       400:
+ *         description: Datos inválidos para la actualización
+ *       500:
+ *         description: Error al actualizar la categoría
+ */
+
+router.put("/updateCategories", updateCategoriesValidator, updateCategory)
+
+/**
+ * @swagger
+ * /categories/delete:
+ *   delete:
+ *     summary: Elimina una categoría
+ *     tags: [Categories]
+ *     responses:
+ *       200:
+ *         description: Categoría eliminada con éxito
+ *       400:
+ *         description: Datos inválidos para la eliminación
+ *       500:
+ *         description: Error al eliminar la categoría
+ */
+
+router.delete("/deleteCategories", deleteCategoriesValidator, deleteCategory)
 
 
 
