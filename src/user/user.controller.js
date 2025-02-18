@@ -85,12 +85,10 @@ export const updatePassword = async (req, res) => {
             });
         }
 
-        //Verificar la password anterior colocada en el body, con la password de la db.
-        const VerifybeforePassword = await verify(user.password, beforePassword);
-        if(!VerifybeforePassword){
-            return res.status(400).json({
+        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+            return res.status(403).json({
                 success: false,
-                message: "La contraseña actual es incorrecta"
+                message: "No tienes permisos para cambiar la contraseña a otro usuario que no sea el tuyo."
             });
         }
 
@@ -103,6 +101,24 @@ export const updatePassword = async (req, res) => {
                 message: "No tienes permisos para cambiar la contraseña a otro admin"
             });
         }
+
+        if(!beforePassword){
+            return res.status(404).json({
+                success: false,
+                message: "debes de colocar la password anterior."
+            });
+
+        }
+
+        //Verificar la password anterior colocada en el body, con la password de la db.
+        const VerifybeforePassword = await verify(user.password, beforePassword);
+        if(!VerifybeforePassword){
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña actual es incorrecta"
+            });
+        }
+
 
         const matchOldAndNewPassword = await verify(user.password, newPassword)
 
@@ -142,6 +158,14 @@ export const updateUser = async (req, res) => {
                 message: "Usuario no encontrado"
             });
         }
+
+        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+            return res.status(403).json({
+                success: false,
+                message: "No tienes permisos para cambiar datos de otro usuario que no sea el tuyo."
+            });
+        }
+
         const data = req.body;
      
         /*Miramos que el usuario que esta intentando actualizar sea ADMIN_ROLE y que si quiere actualizar a otro ADMIN_ROLE
@@ -153,6 +177,16 @@ export const updateUser = async (req, res) => {
                 message: "No tienes permisos para actualizar a otro admin."
             });
         }
+
+        /*Aqui valido de que si el usuario se pone como admin o otro rol distinto a user_role
+        no le deje cambiarselo, unicamente user.*/ 
+        if(data.role && data.role !== "USER_ROLE"){
+            return res.status(400).json({
+                message: "Tu solamente te puedes ser: USER_ROLE"
+            });
+        }
+        //Lo colocamos como user para que el usuario no se pueda colocar como admin si en dado caso la validacion falla.
+        data.role =  "USER_ROLE";
 
         const user = await User.findByIdAndUpdate(uid, data, { new: true });
 
@@ -180,6 +214,13 @@ export const updateProfilePicture = async (req, res) => {
             return res.status(404).json({
                 success: false,
                 message: "Usuario no encontrado"
+            });
+        }
+
+        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+            return res.status(403).json({
+                success: false,
+                message: "No tienes permisos para cambiar datos de otro usuario que no sea el tuyo."
             });
         }
 

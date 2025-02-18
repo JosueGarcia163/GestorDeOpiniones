@@ -1,0 +1,358 @@
+{
+	"info": {
+		"_postman_id": "c820b327-38e3-48ab-9c87-bfc7f3902c1c",
+		"name": "Gestor de Opiniones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37585552"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Actualizar usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2IzZmRjMzQ2MTNlNjY2ZDJiNjhhNjQiLCJpYXQiOjE3Mzk4NDkxODIsImV4cCI6MTczOTg1Mjc4Mn0.aY-n4vjyV-3lIjd4YXayZTZKCXGb1nqIUfAZnhrk_a4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"NuevoNombresasdfa\",\r\n    \"surname\": \"mendezsasdfasf\",\r\n    \"username\": \"nuevoUsernamesasdfafs\",\r\n    \"email\": \"nuevossasdfas@gmail.com\",\r\n    \"phone\": \"58496741\",\r\n    \"role\": \"USER_ROLE\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/user/updateUser/67b3fdc34613e666d2b68a64",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"user",
+								"updateUser",
+								"67b3fdc34613e666d2b68a64"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar contraseña",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2IzZmRjMzQ2MTNlNjY2ZDJiNjhhNjQiLCJpYXQiOjE3Mzk4NDkxODIsImV4cCI6MTczOTg1Mjc4Mn0.aY-n4vjyV-3lIjd4YXayZTZKCXGb1nqIUfAZnhrk_a4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"beforePassword\": \"12345678ASddadaw$%s\",\r\n    \"newPassword\":\"12345678AADS$asdfasf%\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/user/updatePassword/67b3fdc34613e666d2b68a64",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"user",
+								"updatePassword",
+								"67b3fdc34613e666d2b68a64"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/user/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Josue2",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Garcia2",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "username2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "username2@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "52486947",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678ASddadaw$%s",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "USER_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/david/OneDrive/Pictures/Screenshots/Screenshot 2025-02-10 002614.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Josue",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Garcia",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "username1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "username1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "52486947",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678ASddadaw$%s",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "USER_ROLE",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/david/OneDrive/Pictures/Screenshots/Screenshot 2025-02-10 002614.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"username1@gmail.com\",\r\n    \"username\": \"username1\",\r\n    \"password\": \"12345678ASddadaw$%s\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"username2@gmail.com\",\r\n    \"username\": \"username2\",\r\n    \"password\": \"12345678ASddadaw$%s\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
