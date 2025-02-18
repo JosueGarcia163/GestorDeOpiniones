@@ -180,13 +180,11 @@ export const updateUser = async (req, res) => {
 
         /*Aqui valido de que si el usuario se pone como admin o otro rol distinto a user_role
         no le deje cambiarselo, unicamente user.*/ 
-        if(data.role && data.role !== "USER_ROLE"){
+        if(req.usuario.role !== "ADMIN_ROLE" && data.role && data.role !== "USER_ROLE"){
             return res.status(400).json({
                 message: "Tu solamente te puedes ser: USER_ROLE"
             });
         }
-        //Lo colocamos como user para que el usuario no se pueda colocar como admin si en dado caso la validacion falla.
-        data.role =  "USER_ROLE";
 
         const user = await User.findByIdAndUpdate(uid, data, { new: true });
 
