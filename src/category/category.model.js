@@ -11,7 +11,7 @@ const categorySchema = Schema({
         type: String,
         maxLength: [200, "Description cannot exceed 200 characters"],
     },
-    
+
     status: {
         type: Boolean,
         default: true

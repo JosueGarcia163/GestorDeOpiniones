@@ -1,5 +1,6 @@
 import { hash, verify } from "argon2";
 import Categories from "./category.model.js"
+import Publication from "../publication/publication.model.js";
 import User from "../user/user.model.js"
 import fs from "fs/promises"
 import { join, dirname } from "path"
@@ -37,7 +38,8 @@ export const createCategories = async (req, res) => {
 
 export const getCategories = async (req, res) => {
     try {
-        const categories = await Categories.find()
+        const query = { status: true };
+        const categories = await Categories.find(query)
 
         return res.status(200).json({
             success: true,
@@ -108,6 +110,23 @@ export const updateCategory = async (req, res) => {
   
         });
       }
+
+      //Defino en la constante defaultCategory la categoria que coincida con el nombre: CATEGORY_DEFAULT la cual es la category default.
+      const defaultCategory = await Categories.findOne({ name: "CATEGORY_DEFAULT" });
+
+      if (!defaultCategory) {
+          return res.status(500).json({
+              success: false,
+              message: "No se encontró la categoría por defecto en la base de datos"
+          });
+      }
+
+      /*Aqui buscamos en Publicacion el id de la categoria que acabamos de eliminar y lo reemplazamos por el id de defaultCategory
+      para que aparezca como la categoria default.*/ 
+      await Publication.updateMany(
+          { category: id }, 
+          { category: defaultCategory._id } 
+      );
   
       //despues de las validaciones hacemos que actualize el estado de la categoria.
       const updateCategory = await Categories.findByIdAndUpdate(  
