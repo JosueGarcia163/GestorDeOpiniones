@@ -9,7 +9,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const getUserById = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const { uid } = req.usuario
+       // const { uid } = req.params;
         const user = await User.findById(uid)
         
 
@@ -73,7 +74,8 @@ export const getUsers = async (req, res) => {
 
 export const updatePassword = async (req, res) => {
     try {
-        const { uid } = req.params
+        const { uid } = req.usuario 
+      //  const { uid } = req.params
         const { beforePassword, newPassword } = req.body
 
         const user = await User.findById(uid)
@@ -149,8 +151,9 @@ export const updatePassword = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     try {
-        const { uid } = req.params;
-        const userToUpdate = await User.findById(uid)
+        const { id } = req.usuario
+      //  const { uid } = req.params;
+        const userToUpdate = await User.findById(id)
 
         if (!userToUpdate) {
             return res.status(404).json({
@@ -159,7 +162,7 @@ export const updateUser = async (req, res) => {
             });
         }
 
-        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para cambiar datos de otro usuario que no sea el tuyo."
@@ -171,7 +174,7 @@ export const updateUser = async (req, res) => {
         /*Miramos que el usuario que esta intentando actualizar sea ADMIN_ROLE y que si quiere actualizar a otro ADMIN_ROLE
         que no sea a si mismo, no pueda hacerlo.
         */
-        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario.id !== id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para actualizar a otro admin."
@@ -186,7 +189,7 @@ export const updateUser = async (req, res) => {
             });
         }
 
-        const user = await User.findByIdAndUpdate(uid, data, { new: true });
+        const user = await User.findByIdAndUpdate(id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -205,6 +208,7 @@ export const updateUser = async (req, res) => {
 //Agregamos metodo para actualizar imagen
 export const updateProfilePicture = async (req, res) => {
     try {
+        //const { uid } = req.usuario
         const { uid } = req.params
         const userToUpdate = await User.findById(uid)
 

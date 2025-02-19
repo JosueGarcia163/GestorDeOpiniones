@@ -69,7 +69,7 @@ router.get("/", getUsers)
  *         description: Error en la solicitud
  */
 
-router.patch("/updatePassword/:uid", updatePasswordValidator, updatePassword)
+router.patch("/updatePassword", updatePasswordValidator, updatePassword)
 
 /**
  * @swagger
@@ -102,7 +102,7 @@ router.patch("/updatePassword/:uid", updatePasswordValidator, updatePassword)
  */
 
 
-router.put("/updateUser/:uid", updateUserValidator, updateUser)
+router.put("/updateUser", updateUserValidator, updateUser)
 
 
 /**

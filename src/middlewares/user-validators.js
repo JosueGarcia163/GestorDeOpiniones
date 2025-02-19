@@ -47,8 +47,8 @@ export const updatePasswordValidator = [
     validateJWT,
     //Utilizamos el metodo para validar o permitir varios roles.
     hasRoles("ADMIN_ROLE", "USER_ROLE"),
-    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("uid").custom(userExists),
+   // param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
+   // param("uid").custom(userExists),
     body("newPassword").isLength({min: 8}).withMessage("El password debe contener al menos 8 caracteres"),
     validarCampos,
     handleErrors
@@ -58,8 +58,8 @@ export const updateUserValidator = [
     validateJWT,
     //Utilizamos el metodo para validar o permitir varios roles.
     hasRoles("ADMIN_ROLE", "USER_ROLE"),
-    param("uid", "No es un ID válido").isMongoId(),
-    param("uid").custom(userExists),
+  //  param("uid", "No es un ID válido").isMongoId(),
+   // param("uid").custom(userExists),
     validarCampos,
     handleErrors
 ]
