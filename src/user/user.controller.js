@@ -180,7 +180,7 @@ export const updateUser = async (req, res) => {
 
         /*Aqui valido de que si el usuario se pone como admin o otro rol distinto a user_role
         no le deje cambiarselo, unicamente user.*/ 
-        if(req.usuario.role !== "ADMIN_ROLE" && data.role && data.role !== "USER_ROLE"){
+        if(data.role && data.role !== "USER_ROLE"){
             return res.status(400).json({
                 message: "Tu solamente te puedes ser: USER_ROLE"
             });
