@@ -1,13 +1,8 @@
-import { hash, verify } from "argon2";
+
 import Categories from "./category.model.js"
 import Publication from "../publication/publication.model.js";
-import User from "../user/user.model.js"
-import fs from "fs/promises"
-import { join, dirname } from "path"
-import { fileURLToPath } from "url"
 
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const createCategories = async (req, res) => {
     try {

@@ -1,10 +1,6 @@
-import { hash, verify } from "argon2";
 import User from "../user/user.model.js"
 import Category from "../category/category.model.js";
 import Publication from "./publication.model.js";
-import fs from "fs/promises"
-import { join, dirname } from "path"
-import { fileURLToPath } from "url"
 
 
 export const createPublication = async (req, res) => {
@@ -14,6 +10,10 @@ export const createPublication = async (req, res) => {
         const { title, text, category } = req.body;
         const user = req.usuario
         
+        // validacion para confirmar que el rol del usuario para crear publicaciones sea unicamente el user.
+        if (user.role !== 'USER_ROLE') {
+            return res.status(403).json({ message: 'Las publicaciones las pueden hacer unicamente los usuarios' });
+        }
 
         const existingCategory = await Category.findOne({ name: category })
         if (!existingCategory) {
@@ -27,10 +27,6 @@ export const createPublication = async (req, res) => {
             category: existingCategory._id
         });
 
-        // validacion para confirmar que el rol del usuario para crear publicaciones sea unicamente el user.
-        if (user.role !== 'USER_ROLE') {
-            return res.status(403).json({ message: 'Las publicaciones las pueden hacer unicamente los usuarios' });
-        }
 
         await publication.save();
 
