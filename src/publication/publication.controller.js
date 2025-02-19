@@ -67,7 +67,7 @@ export const updatePublication = async (req, res) => {
         const user = req.usuario
 
         const publicacion = await Publication.findById(id)
-        
+
         if (!publicacion) {
             return res.status(404).json({
                 success: false,
@@ -102,6 +102,58 @@ export const updatePublication = async (req, res) => {
         return res.status(500).json({
             success: false,
             msg: "Error al actualizar la publicacion",
+            error,
+        });
+    }
+}
+
+
+export const deletePublication = async (req, res) => {
+    try {
+        const { id } = req.params
+        const user = req.usuario
+
+        const publication = await Publication.findById(id)
+
+        //validamos que la publicacion no venga vacia.
+        if (!publication) {
+            return res.status(404).json({
+                success: false,
+                message: "publicacion no encontrada"
+            });
+        }
+
+        //Validamos para ver si la publicacion ya esta eliminada.
+        if (publication.status == "false") {
+            return res.status(400).json({
+                success: false,
+                message: "La publicacion ya ha sido eliminada previamente."
+            })
+        }
+
+        if (publication.createdBy.toString() !== user.id) {
+            return res.status(403).json({
+                message: 'Las publicaciones solo las puede eliminar el usuario que las creo.'
+            });
+        }
+
+
+        const updatePublication = await Publication.findByIdAndUpdate(
+            id,
+            { status: false },
+            { new: true }
+        )
+        return res.status(200).json({
+            success: true,
+            message: "Publicacion eliminada.",
+            publication: updatePublication
+        })
+
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            msg: "Error al eliminar la publicacion",
             error,
         });
     }
