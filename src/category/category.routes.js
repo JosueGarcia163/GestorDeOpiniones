@@ -65,7 +65,7 @@ router.get("/", getCategoriesValidator, getCategories)
  *         description: Error al actualizar la categoría
  */
 
-router.put("/updateCategories", updateCategoriesValidator, updateCategory)
+router.put("/updateCategories/:id", updateCategoriesValidator, updateCategory)
 
 /**
  * @swagger
@@ -82,7 +82,7 @@ router.put("/updateCategories", updateCategoriesValidator, updateCategory)
  *         description: Error al eliminar la categoría
  */
 
-router.delete("/deleteCategories", deleteCategoriesValidator, deleteCategory)
+router.delete("/deleteCategories/:id", deleteCategoriesValidator, deleteCategory)
 
 
 

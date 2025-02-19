@@ -29,8 +29,8 @@ export const deleteCategoriesValidator = [
     validateJWT,
     //Utilizamos el metodo para validar o permitir varios roles.
     hasRoles("ADMIN_ROLE"),
-    param("uid").isMongoId().withMessage("No es un ID válido de MongoDB"),
-    param("uid").custom(categoryExists),
+    param("id").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    param("id").custom(categoryExists),
     validarCampos,
     handleErrors
 ]
@@ -40,8 +40,8 @@ export const updateCategoriesValidator = [
     validateJWT,
     //Utilizamos el metodo para validar o permitir varios roles.
     hasRoles("ADMIN_ROLE"),
-    param("uid", "No es un ID válido").isMongoId(),
-    param("uid").custom(categoryExists),
+    param("id", "No es un ID válido").isMongoId(),
+    param("id").custom(categoryExists),
     validarCampos,
     handleErrors
 ]
