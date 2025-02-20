@@ -133,6 +133,6 @@ router.put("/updateUser", updateUserValidator, updateUser)
  *       400:
  *         description: Error en la solicitud
  */
-router.patch("/updateProfilePicture/:uid", uploadProfilePicture.single("profilePicture"), updateProfilePictureValidator, updateProfilePicture)
+router.patch("/updateProfilePicture", uploadProfilePicture.single("profilePicture"), updateProfilePictureValidator, updateProfilePicture)
 
 export default router

@@ -9,9 +9,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const getUserById = async (req, res) => {
     try {
-        const { uid } = req.usuario
-       // const { uid } = req.params;
-        const user = await User.findById(uid)
+        const { _id } = req.usuario
+        const user = await User.findById(_id)
         
 
         if (!user) {
@@ -24,7 +23,7 @@ export const getUserById = async (req, res) => {
         /*Miramos que el usuario que esta intentando listar sea ADMIN_ROLE y que si quiere listar a otro ADMIN_ROLE
         que no sea a si mismo, no pueda hacerlo.
         */
-        if (req.usuario.role === "ADMIN_ROLE" && user.role === "ADMIN_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "ADMIN_ROLE" && user.role === "ADMIN_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para ver este usuario"
@@ -74,11 +73,10 @@ export const getUsers = async (req, res) => {
 
 export const updatePassword = async (req, res) => {
     try {
-        const { uid } = req.usuario 
-      //  const { uid } = req.params
+        const { _id } = req.usuario
         const { beforePassword, newPassword } = req.body
 
-        const user = await User.findById(uid)
+        const user = await User.findById(_id)
 
         if(!user){
             return res.status(404).json({
@@ -87,7 +85,7 @@ export const updatePassword = async (req, res) => {
             });
         }
 
-        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "USER_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para cambiar la contraseña a otro usuario que no sea el tuyo."
@@ -97,7 +95,7 @@ export const updatePassword = async (req, res) => {
         /*Miramos que el usuario que esta intentando actualizar sea ADMIN_ROLE y que si quiere actualizar a otro ADMIN_ROLE
         que no sea a si mismo, no pueda hacerlo.
         */
-        if (req.usuario.role === "ADMIN_ROLE" && user.role === "ADMIN_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "ADMIN_ROLE" && user.role === "ADMIN_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para cambiar la contraseña a otro admin"
@@ -133,7 +131,7 @@ export const updatePassword = async (req, res) => {
 
         const encryptedPassword = await hash(newPassword)
 
-        await User.findByIdAndUpdate(uid, { password: encryptedPassword }, { new: true })
+        await User.findByIdAndUpdate(_id, { password: encryptedPassword }, { new: true })
 
         return res.status(200).json({
             success: true,
@@ -151,9 +149,8 @@ export const updatePassword = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     try {
-        const { id } = req.usuario
-      //  const { uid } = req.params;
-        const userToUpdate = await User.findById(id)
+        const { _id } = req.usuario
+        const userToUpdate = await User.findById(_id)
 
         if (!userToUpdate) {
             return res.status(404).json({
@@ -162,7 +159,14 @@ export const updateUser = async (req, res) => {
             });
         }
 
-        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== id) {
+        if (req.usuario.role === "ADMIN_ROLE") {
+            return res.status(403).json({
+                success: false,
+                message: "EL ADMIN no se puede modificar."
+            });
+        }
+
+        if (req.usuario.role === "USER_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para cambiar datos de otro usuario que no sea el tuyo."
@@ -174,7 +178,7 @@ export const updateUser = async (req, res) => {
         /*Miramos que el usuario que esta intentando actualizar sea ADMIN_ROLE y que si quiere actualizar a otro ADMIN_ROLE
         que no sea a si mismo, no pueda hacerlo.
         */
-        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario.id !== id) {
+        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para actualizar a otro admin."
@@ -189,7 +193,7 @@ export const updateUser = async (req, res) => {
             });
         }
 
-        const user = await User.findByIdAndUpdate(id, data, { new: true });
+        const user = await User.findByIdAndUpdate(_id, data, { new: true });
 
         res.status(200).json({
             success: true,
@@ -208,9 +212,8 @@ export const updateUser = async (req, res) => {
 //Agregamos metodo para actualizar imagen
 export const updateProfilePicture = async (req, res) => {
     try {
-        //const { uid } = req.usuario
-        const { uid } = req.params
-        const userToUpdate = await User.findById(uid)
+        const { _id } = req.usuario
+        const userToUpdate = await User.findById(_id)
 
         if (!userToUpdate) {
             return res.status(404).json({
@@ -219,7 +222,7 @@ export const updateProfilePicture = async (req, res) => {
             });
         }
 
-        if (req.usuario.role === "USER_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "USER_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para cambiar datos de otro usuario que no sea el tuyo."
@@ -229,7 +232,7 @@ export const updateProfilePicture = async (req, res) => {
          /*Miramos que el usuario que esta intentando actualizar sea ADMIN_ROLE y que si quiere actualizar a otro ADMIN_ROLE
         que no sea a si mismo, no pueda hacerlo.
         */
-        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario.id !== uid) {
+        if (req.usuario.role === "ADMIN_ROLE" && userToUpdate.role === "ADMIN_ROLE" && req.usuario._id !== _id) {
             return res.status(403).json({
                 success: false,
                 message: "No tienes permisos para actualizar otro usuario ADMIN"
@@ -242,7 +245,7 @@ export const updateProfilePicture = async (req, res) => {
                 message: "No hay archivo en la petición"
             })
         }
-        const user = await User.findById(uid)
+        const user = await User.findById(_id)
         if (user.profilePicture) {
             const oldProfilePicture = join(__dirname, "../../public/uploads/profile-pictures", user.profilePicture)
             await fs.unlink(oldProfilePicture)
