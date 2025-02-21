@@ -1,7 +1,6 @@
 import { body, param } from "express-validator";
 import { publicationExist, namePublicationExists } from "../helpers/db-validators.js";
 import { validarCampos } from "./validate-fields.js";
-import { deleteFileOnError } from "./delete-file-on-error.js";
 import { handleErrors } from "./handle-errors.js";
 import { validateJWT } from "./validate-jwt.js";
 import { hasRoles } from "./validate-roles.js";
@@ -14,7 +13,6 @@ export const createValidator = [
     body("title").custom(namePublicationExists),
     body("text").notEmpty().withMessage("El texto es requerido"),
     validarCampos,
-    deleteFileOnError,
     handleErrors
 ]
 

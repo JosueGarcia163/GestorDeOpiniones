@@ -1,6 +1,7 @@
 import User from "../user/user.model.js"
 import Category from "../category/category.model.js"
 import Publication from "../publication/publication.model.js"
+import Comment from "../comment/comment.model.js"
 
 export const emailExists = async (email = "") => {
     const existe = await User.findOne({ email })
@@ -52,5 +53,14 @@ export const namePublicationExists = async (title = " ") => {
         throw new Error(`The category ${title} is already registered`)
     }
 }
+
+export const commentExist = async (id = " ") => {
+    const existe = await Comment.findById(id)
+    if (!existe) {
+        throw new Error("No existe el comentario con el ID proporcionado.")
+    }
+}
+
+
 
 

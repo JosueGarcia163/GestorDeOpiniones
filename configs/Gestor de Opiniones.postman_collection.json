@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUwZWU3NDVmZTk0ZjNkMzc2YzMiLCJpYXQiOjE3NDAwMzEyNzIsImV4cCI6MTc0MDAzNDg3Mn0.1qEomwwxzA1c2NarGyaPf0mrxpk6qWuYazV9xjrA7aw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTcxMmEwYTgyNGRlYTMzZTQyOTciLCJpYXQiOjE3NDAxMTc5MTMsImV4cCI6MTc0MDEyMTUxM30.NfMeQ-bJ434SIoFQRP4MohJsKUtsJJDgEl826BQs-T4",
 									"type": "string"
 								}
 							]
@@ -61,7 +61,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUwZWU3NDVmZTk0ZjNkMzc2YzMiLCJpYXQiOjE3NDAwMzEyNzIsImV4cCI6MTc0MDAzNDg3Mn0.1qEomwwxzA1c2NarGyaPf0mrxpk6qWuYazV9xjrA7aw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTcxMmEwYTgyNGRlYTMzZTQyOTciLCJpYXQiOjE3NDAxMTc5MTMsImV4cCI6MTc0MDEyMTUxM30.NfMeQ-bJ434SIoFQRP4MohJsKUtsJJDgEl826BQs-T4",
 									"type": "string"
 								}
 							]
@@ -141,7 +141,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUwZWU3NDVmZTk0ZjNkMzc2YzMiLCJpYXQiOjE3NDAwMzEyNzIsImV4cCI6MTc0MDAzNDg3Mn0.1qEomwwxzA1c2NarGyaPf0mrxpk6qWuYazV9xjrA7aw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ZDNhYTE5OWQyZjUzNDNkNWE5MjYiLCJpYXQiOjE3NDAwMzUwMDYsImV4cCI6MTc0MDAzODYwNn0.e-l-QcBc4xSHm8ttNNWvBbaHKY9jF8ew91vBTps-G1o",
 									"type": "string"
 								}
 							]
@@ -149,7 +149,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:3001/opinionManager/v1/categories/deleteCategories/67b6c555e745fe94f3d376d6",
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/categories/deleteCategories/67b6d3e2199d2f5343d5a941",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -163,7 +163,7 @@
 								"v1",
 								"categories",
 								"deleteCategories",
-								"67b6c555e745fe94f3d376d6"
+								"67b6d3e2199d2f5343d5a941"
 							]
 						}
 					},
@@ -298,7 +298,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2Y2I1ZTk0NjE2NWNhZmY2MDY3MTkiLCJpYXQiOjE3NDAwMzI4NjUsImV4cCI6MTc0MDAzNjQ2NX0.KkKVE-RISDNG6mLP3n2IZ1gL4lG1fY1V7WwOLyx3NIY",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ZDNjMDE5OWQyZjUzNDNkNWE5MzYiLCJpYXQiOjE3NDAwMzUwMDksImV4cCI6MTc0MDAzODYwOX0.ao63EnvBMrgBnIEKUdj_r7AL5rfSZOYZOfu6kRslYGo",
 									"type": "string"
 								}
 							]
@@ -635,7 +635,7 @@
 			]
 		},
 		{
-			"name": "publicaciones",
+			"name": "publication",
 			"item": [
 				{
 					"name": "Crear Publicacion",
@@ -645,7 +645,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUyM2U3NDVmZTk0ZjNkMzc2Y2EiLCJpYXQiOjE3NDAwMzEyNjksImV4cCI6MTc0MDAzNDg2OX0.w6LfAAEFN7TArz7TWz461f9MbB9gqUHxhlZ97tG0ZC8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
 									"type": "string"
 								}
 							]
@@ -654,7 +654,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Publicacion1\",\r\n    \"category\": \"Categoria1\",\r\n    \"text\": \"textoPublicacion\"\r\n\r\n}",
+							"raw": "{\r\n    \"title\": \"Publicacion2\",\r\n    \"category\": \"Categoria1\",\r\n    \"text\": \"textoPublicacion\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -689,7 +689,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUyM2U3NDVmZTk0ZjNkMzc2Y2EiLCJpYXQiOjE3NDAwMzEyNjksImV4cCI6MTc0MDAzNDg2OX0.w6LfAAEFN7TArz7TWz461f9MbB9gqUHxhlZ97tG0ZC8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ZDNjMDE5OWQyZjUzNDNkNWE5MzYiLCJpYXQiOjE3NDAwMzUwMDksImV4cCI6MTc0MDAzODYwOX0.ao63EnvBMrgBnIEKUdj_r7AL5rfSZOYZOfu6kRslYGo",
 									"type": "string"
 								}
 							]
@@ -706,7 +706,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3001/opinionManager/v1/publication/updatePublication/67b6c59de745fe94f3d376e2",
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/publication/updatePublication/67b6d411199d2f5343d5a948",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -720,7 +720,7 @@
 								"v1",
 								"publication",
 								"updatePublication",
-								"67b6c59de745fe94f3d376e2"
+								"67b6d411199d2f5343d5a948"
 							]
 						}
 					},
@@ -734,7 +734,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUyM2U3NDVmZTk0ZjNkMzc2Y2EiLCJpYXQiOjE3NDAwMzEyNjksImV4cCI6MTc0MDAzNDg2OX0.w6LfAAEFN7TArz7TWz461f9MbB9gqUHxhlZ97tG0ZC8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2ZDNjMDE5OWQyZjUzNDNkNWE5MzYiLCJpYXQiOjE3NDAwMzUwMDksImV4cCI6MTc0MDAzODYwOX0.ao63EnvBMrgBnIEKUdj_r7AL5rfSZOYZOfu6kRslYGo",
 									"type": "string"
 								}
 							]
@@ -751,7 +751,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3001/opinionManager/v1/publication/deletePublication/67b6c59de745fe94f3d376e2",
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/publication/deletePublication/67b6d411199d2f5343d5a948",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -765,7 +765,7 @@
 								"v1",
 								"publication",
 								"deletePublication",
-								"67b6c59de745fe94f3d376e2"
+								"67b6d411199d2f5343d5a948"
 							]
 						}
 					},
@@ -782,7 +782,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I2YzUyM2U3NDVmZTk0ZjNkMzc2Y2EiLCJpYXQiOjE3NDAwMzEyNjksImV4cCI6MTc0MDAzNDg2OX0.w6LfAAEFN7TArz7TWz461f9MbB9gqUHxhlZ97tG0ZC8",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
 									"type": "string"
 								}
 							]
@@ -812,6 +812,192 @@
 								"opinionManager",
 								"v1",
 								"publication",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "Crear Comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Hola este es mi primer comentario.\",\r\n    \"publication\": \"Publicacion1\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/comment/createComment",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"comment",
+								"createComment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Hola este es mi segundo comentario.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/comment/updateComment/67b819e7adc3ea4a6b24383d",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"comment",
+								"updateComment",
+								"67b819e7adc3ea4a6b24383d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/comment/deleteComment/67b819e7adc3ea4a6b24383d",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"comment",
+								"deleteComment",
+								"67b819e7adc3ea4a6b24383d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar comentarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I4MTc4NGEwYTgyNGRlYTMzZTQyYTAiLCJpYXQiOjE3NDAxMTc5MDQsImV4cCI6MTc0MDEyMTUwNH0.oCXtdE8c2zht663ME7GFOECQOutlgKvwO8mchd0ST-0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/opinionManager/v1/comment/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"opinionManager",
+								"v1",
+								"comment",
 								""
 							]
 						}

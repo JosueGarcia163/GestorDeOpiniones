@@ -5,46 +5,68 @@ import { createValidator, getCategoriesValidator, deleteCategoriesValidator, upd
 const router = Router()
 
 /**
-* @swagger
-* /categories/createCategories:
-*   post:
-*     summary: Crea una nueva categoría
-*     tags: [Categories]
-*     requestBody:
-*       required: true
-*       content:
-*         application/json:
-*           schema:
-*             type: object
-*             properties:
-*               name:
-*                 type: string
-*                 description: Nombre de la categoría
-*     responses:
-*       201:
-*         description: Categoría creada exitosamente
-*       400:
-*         description: Error en la solicitud
-*       403:
-*         description: No autorizado para crear categorías
-*       500:
-*         description: Error en el servidor
-*/
+ * @swagger
+ * /createCategories:
+ *   post:
+ *     summary: Crea una nueva categoría
+ *     tags: [Category]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Tecnología"
+ *               description:
+ *                 type: string
+ *                 example: "Categoría dedicada a temas tecnológicos"
+ *     responses:
+ *       201:
+ *         description: Categoría creada exitosamente
+ *       400:
+ *         description: Datos inválidos o falta información
+ *       500:
+ *         description: Error interno del servidor
+ */
+
 
 router.post("/createCategories", createValidator, createCategories)
 
 /**
  * @swagger
- * /categories:
+ * /:
  *   get:
- *     summary: Obtiene todas las categorías
- *     tags: [Categories]
+ *     summary: Obtiene una lista de todas las categorías
+ *     tags: [Category]
  *     responses:
  *       200:
- *         description: Lista de categorías obtenida con éxito
+ *         description: Categorías obtenidas exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                     example: "60d0fe4f5311236168a109f1"
+ *                   name:
+ *                     type: string
+ *                     example: "Tecnología"
+ *                   description:
+ *                     type: string
+ *                     example: "Categoría dedicada a temas tecnológicos"
+ *                   status:
+ *                     type: boolean
+ *                     example: true
  *       500:
- *         description: Error al obtener las categorías
+ *         description: Error interno del servidor
  */
+
 
 
 router.get("/", getCategoriesValidator, getCategories)
@@ -52,35 +74,69 @@ router.get("/", getCategoriesValidator, getCategories)
 
 /**
  * @swagger
- * /categories/update:
+ * /updateCategories/{id}:
  *   put:
- *     summary: Actualiza una categoría existente
- *     tags: [Categories]
+ *     summary: Actualiza una categoría existente por ID
+ *     tags: [Category]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "60d0fe4f5311236168a109f1"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Ciencias"
+ *               description:
+ *                 type: string
+ *                 example: "Categoría dedicada a temas de ciencias naturales"
+ *               status:
+ *                 type: boolean
+ *                 example: true
  *     responses:
  *       200:
- *         description: Categoría actualizada con éxito
+ *         description: Categoría actualizada exitosamente
  *       400:
- *         description: Datos inválidos para la actualización
+ *         description: Datos inválidos
+ *       404:
+ *         description: Categoría no encontrada
  *       500:
- *         description: Error al actualizar la categoría
+ *         description: Error interno del servidor
  */
+
 
 router.put("/updateCategories/:id", updateCategoriesValidator, updateCategory)
 
 /**
  * @swagger
- * /categories/delete:
+ * /deleteCategories/{id}:
  *   delete:
- *     summary: Elimina una categoría
- *     tags: [Categories]
+ *     summary: Elimina una categoría por ID
+ *     tags: [Category]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: "60d0fe4f5311236168a109f1"
  *     responses:
  *       200:
- *         description: Categoría eliminada con éxito
- *       400:
- *         description: Datos inválidos para la eliminación
+ *         description: Categoría eliminada exitosamente
+ *       404:
+ *         description: Categoría no encontrada
  *       500:
- *         description: Error al eliminar la categoría
+ *         description: Error interno del servidor
  */
+
 
 router.delete("/deleteCategories/:id", deleteCategoriesValidator, deleteCategory)
 

@@ -54,7 +54,7 @@ export const getPublication = async (req, res) => {
     } catch (err) {
         return res.status(500).json({
             success: false,
-            message: "Error al obtener los usuarios",
+            message: "Error al obtener los Publicacion",
             error: err.message
         })
     }
@@ -82,7 +82,7 @@ export const updatePublication = async (req, res) => {
 
         if (publicacion.createdBy.toString() !== user.id) {
             return res.status(403).json({
-                message: 'Las publicaciones las pueden hacer unicamente los usuarios que las crearon'
+                message: 'Las publicaciones las pueden editar unicamente los usuarios que las crearon'
             });
         }
 
