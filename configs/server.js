@@ -44,7 +44,6 @@ const routes = (app) => {
     app.use("/opinionManager/v1/publication",publicationRoutes)
     app.use("/opinionManager/v1/comment",commentRoutes)
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
-    console.log('Swagger Docs:', swaggerDocs)
 
 }
 
