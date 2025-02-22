@@ -28,6 +28,13 @@ export const createComment = async (req, res) => {
 
         await comment.save();
 
+
+        await Publication.findByIdAndUpdate(
+            existingPublication._id,
+            { $push: { comments: comment._id } },
+            { new: true }
+        );
+
         res.status(200).json({
             success: true,
             comment
@@ -63,7 +70,7 @@ export const getComment = async (req, res) => {
 export const updateComment = async (req, res) => {
     try {
         const { id } = req.params;
-        const { content, publication } = req.body;
+        const { content } = req.body;
         const user = req.usuario
 
         const comment = await Comment.findById(id)
@@ -85,7 +92,7 @@ export const updateComment = async (req, res) => {
         }
 
         comment.content = content || comment.content;
-        
+
 
         await comment.save();
 
@@ -140,6 +147,13 @@ export const deleteComment = async (req, res) => {
             { status: false },
             { new: true }
         )
+
+        //Saco del arreglo de publicaciones el comentario que elimine.
+        await Publication.updateMany(
+            { comments: id },
+            { $pull: { comments: id } }
+        );
+
         return res.status(200).json({
             success: true,
             message: "Comentario eliminado.",

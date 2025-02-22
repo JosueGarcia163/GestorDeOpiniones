@@ -26,7 +26,7 @@ const router = Router()
  *                 example: "Contenido de la publicación"
  *               category:
  *                 type: string
- *                 example: "60d0fe4f5311236168a109f1"  # ID de una categoría existente
+ *                 example: "Categoria1"  # ID de una categoría existente
  *     responses:
  *       201:
  *         description: Publicación creada exitosamente
@@ -42,23 +42,11 @@ router.post("/createPublication", createValidator, createPublication)
 
 /**
  * @swagger
- * /:
+ * /publications:
  *   get:
  *     summary: Obtiene una lista de todas las publicaciones
  *     tags: [Publication]
- *     parameters:
- *       - in: query
- *         name: limit
- *         required: false
- *         schema:
- *           type: integer
- *           example: 10
- *       - in: query
- *         name: page
- *         required: false
- *         schema:
- *           type: integer
- *           example: 1
+ *     description: Obtiene todas las publicaciones disponibles sin parámetros de consulta.
  *     responses:
  *       200:
  *         description: Publicaciones obtenidas exitosamente
@@ -80,16 +68,22 @@ router.post("/createPublication", createValidator, createPublication)
  *                     example: "Contenido de la publicación"
  *                   category:
  *                     type: string
- *                     example: "60d0fe4f5311236168a109f1"  # ID de una categoría
+ *                     example: "Categoria1"  # ID de una categoría
  *                   createdBy:
  *                     type: string
- *                     example: "60d0fe4f5311236168a109f2"  # ID de un usuario
+ *                     example: "Usuario1"  # ID de un usuario
  *                   status:
  *                     type: boolean
  *                     example: true
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ *                     example: "2025-02-21T00:00:00Z"  # Fecha de creación de la publicación
  *       500:
  *         description: Error interno del servidor
  */
+
+
 
 
 router.get("/", getPublicationValidator, getPublication)
@@ -122,10 +116,7 @@ router.get("/", getPublicationValidator, getPublication)
  *                 example: "Contenido actualizado"
  *               category:
  *                 type: string
- *                 example: "60d0fe4f5311236168a109f1"  # ID de una categoría existente
- *               status:
- *                 type: boolean
- *                 example: true
+ *                 example: "Categoria1"  # nombre de una categoría existente
  *     responses:
  *       200:
  *         description: Publicación actualizada exitosamente

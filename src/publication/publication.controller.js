@@ -47,6 +47,9 @@ export const getPublication = async (req, res) => {
             .populate("createdBy", "name surname")
             //Buscamos el atributo name y description por medio del campo que hace referenca a categorias dentro de publicacion
             .populate("category", "name description")
+            //Buscamos el atributo comments y el contenido del comentario para listarlo.
+            .populate("comments", "content")
+
         return res.status(200).json({
             success: true,
             publicacion

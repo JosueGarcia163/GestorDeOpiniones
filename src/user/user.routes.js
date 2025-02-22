@@ -59,16 +59,73 @@ router.get("/findUser", getUserByIdValidator, getUserById)
 
 /**
  * @swagger
- * /:
+ * /users:
  *   get:
- *     summary: Obtiene todos los usuarios
+ *     summary: Obtiene todos los usuarios con paginación
  *     tags: [User]
+ *     parameters:
+ *       - in: query
+ *         name: limite
+ *         description: Número de usuarios por página (opcional)
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 5
+ *       - in: query
+ *         name: desde
+ *         description: El índice de inicio para la paginación (opcional)
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           example: 0
  *     responses:
  *       200:
  *         description: Lista de usuarios obtenida con éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 total:
+ *                   type: integer
+ *                   example: 100  # Total de usuarios en la base de datos
+ *                 users:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: string
+ *                         example: "60d0fe4f5311236168a109f1"
+ *                       name:
+ *                         type: string
+ *                         example: "Juan"
+ *                       surname:
+ *                         type: string
+ *                         example: "Perez"
+ *                       username:
+ *                         type: string
+ *                         example: "juanperez"
+ *                       email:
+ *                         type: string
+ *                         example: "juanperez@gmail.com"
+ *                       phone:
+ *                         type: string
+ *                         example: "58496741"
+ *                       role:
+ *                         type: string
+ *                         enum: ["USER_ROLE", "ADMIN_ROLE"]
+ *                         example: "USER_ROLE"
+ *                       status:
+ *                         type: boolean
+ *                         example: true
  *       500:
  *         description: Error interno del servidor
  */
+
 
 router.get("/", getUsers)
 
@@ -117,27 +174,66 @@ router.patch("/updatePassword", updatePasswordValidator, updatePassword)
  *           properties:
  *             name:
  *               type: string
+ *               example: "NuevoNombresasdfa"
  *             surname:
  *               type: string
+ *               example: "mendezsasdfasf"
+ *             username:
+ *               type: string
+ *               example: "nuevoUsernamesasdfafs"
  *             email:
  *               type: string
+ *               example: "nuevossasdfas@gmail.com"
  *             phone:
  *               type: string
+ *               example: "58496741"
  *             role:
  *               type: string
  *               enum: [USER_ROLE, ADMIN_ROLE]
- *             profilePicture:
- *               type: string
+ *               example: "USER_ROLE"
  *     responses:
  *       200:
  *         description: Usuario actualizado con éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuario actualizado correctamente."
  *       400:
- *         description: Datos incorrectos o no permitidos (ej. rol no permitido)
+ *         description: Datos incorrectos o no permitidos (por ejemplo, rol no permitido)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Rol no permitido."
  *       403:
  *         description: El usuario no tiene permisos para modificar los datos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "No tienes permiso para actualizar este usuario."
  *       500:
  *         description: Error interno al actualizar el usuario
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Hubo un error interno al actualizar los datos del usuario."
  */
+
 
 
 router.put("/updateUser", updateUserValidator, updateUser)

@@ -23,7 +23,8 @@ const swaggerOptions = {
         "./src/auth/*.js",
         "./src/user/*.js",
         "./src/category/*.js",
-        "./src/publication/*.js"
+        "./src/publication/*.js",
+        "./src/comment/*.js"
     ]
 }
 const swaggerDocs = swaggerJSDoc(swaggerOptions)

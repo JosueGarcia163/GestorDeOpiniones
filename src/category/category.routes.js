@@ -37,7 +37,7 @@ router.post("/createCategories", createValidator, createCategories)
 
 /**
  * @swagger
- * /:
+ * /categories:
  *   get:
  *     summary: Obtiene una lista de todas las categorías
  *     tags: [Category]
@@ -66,6 +66,7 @@ router.post("/createCategories", createValidator, createCategories)
  *       500:
  *         description: Error interno del servidor
  */
+
 
 
 
@@ -98,9 +99,6 @@ router.get("/", getCategoriesValidator, getCategories)
  *               description:
  *                 type: string
  *                 example: "Categoría dedicada a temas de ciencias naturales"
- *               status:
- *                 type: boolean
- *                 example: true
  *     responses:
  *       200:
  *         description: Categoría actualizada exitosamente
